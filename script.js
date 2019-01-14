@@ -9,7 +9,7 @@ req.onload = () => {
 const dataset = req;
     
 const width = 800;
-const height = 400;
+const height = 500;
 const margin = 40;
 
 const xScale = d3.scaleLinear()
@@ -47,17 +47,13 @@ const svg = d3.select('body')
 svg.selectAll('circle')
     .data(dataset)
     .enter()
-//    .append('circle')
-//    .attr('cx', (d) => xScale(d.Year))
-//    .attr('cy', (d) => yScale(d.Time))
-//    .attr('r', 5)
     .append('rect')
     .attr('x', (d) => xScale(d.Year))
     .attr('y', (d) => yScale(d.Time))
     .attr('width', 10)
     .attr('height', 10)
     .attr('class', 'dot')
-    .style('fill', (d) => {if (d.Doping.length > 1) { return 'yellow'} else {return 'blue'}})
+    .style('fill', (d) => {if (d.Doping.length > 1) { return '#d0095c'} else {return '#2bbf74'}})
     .attr('data-xvalue', (d) => d.Year)
     .attr('data-yvalue', (d) => d.Time)
     .on('mouseover', (d) => {
