@@ -25,7 +25,6 @@ const xScale = d3.scaleLinear()
 const  yScale = d3.scaleTime()
                     .domain(d3.extent(dataset, (d) => d.Time))
                     .range([8, height - margin]);
-console.log(dataset[0].Time);
 
 const xAxis = d3.axisBottom(xScale)
                 .tickFormat(d3.format('d'));
@@ -37,8 +36,8 @@ const svg = d3.select('body')
                 .append('svg')
                 .attr('id', 'chart')
                 .attr('width', width)
-                .attr('height', height)
-    
+                .attr('height', height);
+
 svg.selectAll('circle')
     .data(dataset)
     .enter()
@@ -47,8 +46,11 @@ svg.selectAll('circle')
     .attr('cy', (d) => yScale(d.Time))
     .attr('r', 5)
     .attr('class', 'dot')
+    .style('fill', (d) => {if (d.Doping.length > 1) { return 'yellow'}    
+                           else {return 'blue'}
+                            })
     .attr('data-xvalue', (d) => d.Year)
-    .attr('data-yvalue', (d) => d.Time)
+    .attr('data-yvalue', (d) => d.Time);
 
 svg.append('g')
     .attr('transform', 'translate(0, ' + (height - margin) + ')')

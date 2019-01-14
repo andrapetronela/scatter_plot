@@ -19,3 +19,12 @@ body {
     display: block;
     margin: 0 auto;
 }
+
+#legend {
+    height: 2rem;
+    width: 4rem;
+    background-color:antiquewhite; 
+    position: absolute;
+    top: 5rem;
+    right: 5rem;
+}
