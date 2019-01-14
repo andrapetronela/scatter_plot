@@ -38,6 +38,17 @@ const svg = d3.select('body')
                 .attr('width', width)
                 .attr('height', height);
 
+//const legend = d3.select('#chart')
+//                    .append('rect')
+//                    .attr('id', 'legend')
+//                    .attr('x', width - 3 * margin)
+//                    .attr('y', margin)
+//                    .style('width', '4rem')
+//                    .style('height', '15')
+//                    .style('fill', 'red')
+                    
+                    
+
 svg.selectAll('circle')
     .data(dataset)
     .enter()
