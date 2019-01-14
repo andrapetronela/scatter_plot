@@ -8,7 +8,7 @@ body {
     font-family: sans-serif;
     background: #333;
     font-family: Lato;
-    color: #e2e2e2;
+    color: rgba(238, 238, 238, 0.81);
 }
 
 #title {
@@ -33,6 +33,7 @@ body {
     border-radius: 10px;
     margin-top: 2rem;
     font-weight: 600;
+    box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
 }
 
 .dot:hover {
@@ -65,8 +66,8 @@ body {
 }
 
 #tooltip {
-    background: #333;
-    color: rgba(255, 255, 255, 0.94);
+    background: #210433;
+    color: rgba(238, 238, 238, 0.81);
     padding: 1rem .5rem;
     visibility: hidden;
     z-index: 5;
