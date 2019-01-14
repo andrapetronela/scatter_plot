@@ -1,0 +1,21 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif;
+    background: #edeaea;
+}
+
+#title {
+    margin: 2rem auto;
+    text-align: center;
+}
+
+#chart {
+    background: #d6c9cd;
+    display: block;
+    margin: 0 auto;
+}
