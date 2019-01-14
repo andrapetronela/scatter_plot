@@ -6,20 +6,35 @@
 
 body {
     font-family: sans-serif;
-    background: #edeaea;
+    background: #333;
+    font-family: Lato;
 }
 
 #title {
     margin: 2rem auto;
     text-align: center;
+    color: #eee;
+    font-weight: 300;
 }
 
 #chart {
-    background: #d6c9cd;
+    background-color:#a6a7a8;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.3) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.3) 1px, transparent 1px),
+    linear-gradient(rgba(255,255,255,.3) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.3) 1px, transparent 1px);
+    background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px;
+    background-position:-2px -2px, -2px -2px, -1px -1px, -1px -1px;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    border-radius: 10px;
+    font-weight: 800;
+}
+
+.dot:hover {
+    opacity: .5;
 }
 
 #legend {
@@ -28,6 +43,7 @@ body {
     right: 2rem;
     transform: translateY(-50%);
     height: 2rem;
+    color: #eee;
 }
 
 #no_doping_legend {
