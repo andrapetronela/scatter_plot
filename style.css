@@ -48,8 +48,8 @@ body {
 
 #tooltip {
     background: #333;
-    height: 2rem;
-    width: 4rem;
+    color: rgba(255, 255, 255, 0.94);
+    padding: 1rem .5rem;
     visibility: hidden;
     z-index: 5;
     position: absolute;

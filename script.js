@@ -29,9 +29,10 @@ const yScale = d3.scaleTime()
 
 const xAxis = d3.axisBottom(xScale)
                 .tickFormat(d3.format('d'));
-
+    
+const timeFormat = d3.timeFormat('%M:%S')
 const yAxis = d3.axisLeft(yScale)
-                .tickFormat(d3.timeFormat('%M:%S'));
+                .tickFormat(timeFormat);
     
 const tooltip = d3.select('#container')
                     .append('div')
@@ -58,10 +59,12 @@ svg.selectAll('circle')
             tooltip.style('left', d3.event.pageX + 10 + 'px')
                     .style('top', d3.event.pageY + 'px')
                     .style('visibility', 'visible')
+                    .style('border-radius', '8px')
                     .attr('data-year', d.Year)
-                    .html(d.Name + '<br />' + d.Nationality)
+                    .html(d.Name + ', ' + d.Nationality + ', ' + d.Year + '<br />' + 'Place: ' + d.Place + ' Time: ' + timeFormat(d.Time) +  '<br />' + d.Doping)
     })
     .on('mouseout', (d) => { tooltip.style("visibility","hidden")
+            .style('transition', 'visibility .1s')
         });
 
 svg.append('g')
