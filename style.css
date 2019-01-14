@@ -45,3 +45,13 @@ body {
     background: yellow;
     display: inline-block;
 }
+
+#tooltip {
+    background: #333;
+    height: 2rem;
+    width: 4rem;
+    visibility: hidden;
+    z-index: 5;
+    position: absolute;
+    transition: visibility .3s;
+}

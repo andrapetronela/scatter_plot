@@ -13,16 +13,17 @@ const height = 400;
 const margin = 40;
 
 const xScale = d3.scaleLinear()
-                .domain([d3.min(dataset, (d) => d.Year -1), d3.max(dataset, (d) => d.Year + 1)])
+                .domain([d3.min(dataset, (d) => d.Year-1), d3.max(dataset, (d) => d.Year + 1)])
                 .range([margin, width-margin]);
     
 
-  dataset.forEach(function(d) {
+dataset.forEach((d) => {
     const parsedTime = d.Time.split(':');
-    d.Time = new Date(Date.UTC(1970, 0, 1, 0, parsedTime[0], parsedTime[1]));})
+    d.Time = new Date(Date.UTC(1970, 0, 1, 0, parsedTime[0], parsedTime[1]));
+    })
   
     
-const  yScale = d3.scaleTime()
+const yScale = d3.scaleTime()
                     .domain(d3.extent(dataset, (d) => d.Time))
                     .range([8, height - margin]);
 
@@ -32,22 +33,15 @@ const xAxis = d3.axisBottom(xScale)
 const yAxis = d3.axisLeft(yScale)
                 .tickFormat(d3.timeFormat('%M:%S'));
     
+const tooltip = d3.select('#container')
+                    .append('div')
+                    .attr('id', 'tooltip')
+
 const svg = d3.select('body')
                 .append('svg')
                 .attr('id', 'chart')
                 .attr('width', width)
-                .attr('height', height);
-
-//const legend = d3.select('#chart')
-//                    .append('rect')
-//                    .attr('id', 'legend')
-//                    .attr('x', width - 3 * margin)
-//                    .attr('y', margin)
-//                    .style('width', '4rem')
-//                    .style('height', '15')
-//                    .style('fill', 'red')
-                    
-                    
+                .attr('height', height);                   
 
 svg.selectAll('circle')
     .data(dataset)
@@ -57,11 +51,18 @@ svg.selectAll('circle')
     .attr('cy', (d) => yScale(d.Time))
     .attr('r', 5)
     .attr('class', 'dot')
-    .style('fill', (d) => {if (d.Doping.length > 1) { return 'yellow'}    
-                           else {return 'blue'}
-                            })
+    .style('fill', (d) => {if (d.Doping.length > 1) { return 'yellow'} else {return 'blue'}})
     .attr('data-xvalue', (d) => d.Year)
-    .attr('data-yvalue', (d) => d.Time);
+    .attr('data-yvalue', (d) => d.Time)
+    .on('mouseover', (d) => {
+            tooltip.style('left', d3.event.pageX + 10 + 'px')
+                    .style('top', d3.event.pageY + 'px')
+                    .style('visibility', 'visible')
+                    .attr('data-year', d.Year)
+                    .html(d.Name + '<br />' + d.Nationality)
+    })
+    .on('mouseout', (d) => { tooltip.style("visibility","hidden")
+        });
 
 svg.append('g')
     .attr('transform', 'translate(0, ' + (height - margin) + ')')
