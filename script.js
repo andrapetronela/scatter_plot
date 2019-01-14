@@ -48,6 +48,7 @@ svg.selectAll('circle')
     .attr('r', 5)
     .attr('class', 'dot')
     .attr('data-xvalue', (d) => d.Year)
+    .attr('data-yvalue', (d) => d.Time)
 
 svg.append('g')
     .attr('transform', 'translate(0, ' + (height - margin) + ')')
