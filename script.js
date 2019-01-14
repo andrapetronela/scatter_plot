@@ -13,7 +13,7 @@ const height = 400;
 const margin = 40;
 
 const xScale = d3.scaleLinear()
-                .domain([d3.min(dataset, (d) => d.Year), d3.max(dataset, (d) => d.Year + 1)])
+                .domain([d3.min(dataset, (d) => d.Year -1), d3.max(dataset, (d) => d.Year + 1)])
                 .range([margin, width-margin]);
     
 
@@ -24,7 +24,7 @@ const xScale = d3.scaleLinear()
     
 const  yScale = d3.scaleTime()
                     .domain(d3.extent(dataset, (d) => d.Time))
-                    .range([margin, height - margin]);
+                    .range([8, height - margin]);
 console.log(dataset[0].Time);
 
 const xAxis = d3.axisBottom(xScale)
@@ -43,10 +43,11 @@ svg.selectAll('circle')
     .data(dataset)
     .enter()
     .append('circle')
-    .attr('cx', (d) => xScale(d.Year) )
-    .attr('cy', (d, i) => yScale(d.Time))
+    .attr('cx', (d) => xScale(d.Year))
+    .attr('cy', (d) => yScale(d.Time))
     .attr('r', 5)
     .attr('class', 'dot')
+    .attr('data-xvalue', (d) => d.Year)
 
 svg.append('g')
     .attr('transform', 'translate(0, ' + (height - margin) + ')')
