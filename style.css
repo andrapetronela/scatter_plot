@@ -36,8 +36,13 @@ body {
     box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
 }
 
+.dot {
+    transition: all .2s;
+}
+
 .dot:hover {
     opacity: .5;
+    stroke: #210433;
 }
 
 #legend {
@@ -47,6 +52,7 @@ body {
     transform: translateY(-50%);
     height: 2rem;
     color: #eee;
+    z-index: 555;
 }
 
 #no_doping_legend {
