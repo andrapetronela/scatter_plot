@@ -43,6 +43,7 @@ body {
 .dot:hover {
     opacity: .5;
     stroke: #210433;
+    stroke-width: 4;
 }
 
 #legend {
